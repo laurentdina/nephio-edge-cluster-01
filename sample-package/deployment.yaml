@@ -21,4 +21,4 @@ spec:
       - name: httpbin
         image: kennethreitz/httpbin:latest # {"$kpt-set":"image"}
         ports:
-        - containerPort: 7010
+        - containerPort: 80
