@@ -1,0 +1,28 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /nginx
+  name: nginx
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|nginx'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/laurentdina/nephio-test-catalog-01.git
+    directory: nginx
+    ref: main
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/laurentdina/nephio-test-catalog-01.git
+    directory: nginx
+    ref: main
+    commit: 88294e7bf7a812a6f0852e92894c994cdfc7b88d
+info:
+  emails:
+  - kpt-team@google.com
+  description: This is an example nginx package.
+pipeline:
+  validators:
+  - image: gcr.io/kpt-fn/kubeval:v0.3
+    configMap:
+      strict: "true"
